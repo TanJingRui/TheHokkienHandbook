@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered and Styled Flash Card</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif; /* Set default font family */
+    }
+
+    .flashcard {
+      width: 400px; /* Increased width by 50% */
+      height: 230px; /* Decreased height by 30% */
+      perspective: 1000px;
+      position: relative;
+      cursor: pointer;
+      background-color: #e0e0e0; /* Light gray background */
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden; /* Prevents content overflow */
+      transition: transform 0.6s;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .front, .back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center; /* Center text horizontally */
+      font-size: 24px; /* Reduced font size for better fit */
+      font-weight: bold;
+      color: #333; /* Text color */
+      backface-visibility: hidden;
+      padding: 20px;
+      box-sizing: border-box;
+      transform-style: preserve-3d;
+    }
+
+    .front {
+      background-color: #f5f5f5; /* Lighter background color */
+      transform: rotateY(0deg);
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .back {
+      background-color: #f0f0f0; /* Light gray background */
+      transform: rotateY(180deg);
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .flashcard.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .buttons {
+       position: absolute;
+       bottom: 7%; /* Adjusted bottom position */
+       width: 100%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+
+    .buttons .button {
+      width: 60px; /* Reduced button size */
+      height: 60px; /* Reduced button size */
+      background-color: #fff; /* White background */
+      color: #333;
+      font-size: 14px; /* Reduced font size */
+      font-weight: bold;
+      text-align: center;
+      line-height: 60px; /* Center text vertically */
+      border-radius: 50%; /* Rounded shape */
+      margin: 0 20px; /* Spacing between buttons */
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .buttons .button:hover {
+      background-color: #f5f5f5; /* Light gray on hover */
+    }
+  </style>
+</head>
+<body>
+
+<div class="flashcard" onclick="flipCard(this)">
+  <div class="card-inner">
+    <div class="front">
+      <div style="margin-top: 10px;"> <!-- Adjusted margin for Text Box 1 -->
+        Hello
+      </div>
+      <div style="margin-top: 5px;"> <!-- Adjusted margin for Text Box 2 -->
+        你好
+      </div>
+    </div>
+    <div class="back">
+      li4 ho4
+    </div>
+  </div>
+</div>
+
+<div class="buttons">
+  <div class="button" onclick="decreaseCounter()">←</div> <!-- Adjusted button text for compactness -->
+  <div class="button" onclick="increaseCounter()">→</div> <!-- Adjusted button text for compactness -->
+</div>
+
+<script>
+  function flipCard(card) {
+    card.classList.toggle('flipped');
+  }
+
+  let counter = 0; // Initialize counter variable
+
+  function increaseCounter() {
+    counter++;
+    updateCounterDisplay();
+  }
+
+  function decreaseCounter() {
+    counter--;
+    updateCounterDisplay();
+  }
+
+  function updateCounterDisplay() {
+    document.getElementById('counterDisplay').innerText = counter;
+  }
+</script>
+
+</body>
+</html>

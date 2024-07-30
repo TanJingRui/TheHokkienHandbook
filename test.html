@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect and Set Local Storage Example</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 20px;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+    }
+
+    .button {
+      padding: 30px;
+      font-size: 16px;
+      text-align: center;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Button-specific background colors */
+    .button:nth-child(1) {
+      background-color: #737475; /* Dark Gray */
+    }
+
+    .button:nth-child(2) {
+      background-color: #7d8380; /* Gray */
+    }
+
+    .button:nth-child(3) {
+      background-color: #8c8f88; /* Green Gray */
+    }
+
+    .button:nth-child(4) {
+      background-color: #adaba8; /* Purple */
+    }
+
+    .button:nth-child(5) {
+      background-color: #d4c9cf; /* Dark Green */
+    }
+
+    .button:nth-child(6) {
+      background-color: #b7b0c2; /* Light Pink */
+    }
+
+    .button:nth-child(7) {
+      background-color: #b8c4ca; /* Gold */
+    }
+
+    /* Hover effect */
+    .button:hover {
+      filter: brightness(110%);
+    }
+  </style>
+</head>
+<body>
+  <div class="button-grid">
+    <button class="button" onclick="setLocalStorageAndRedirect(1)">Button 1</button>
+    <button class="button" onclick="setLocalStorageAndRedirect(2)">Button 2</button>
+    <button class="button" onclick="setLocalStorageAndRedirect(3)">Button 3</button>
+    <button class="button" onclick="setLocalStorageAndRedirect(4)">Button 4</button>
+    <button class="button" onclick="setLocalStorageAndRedirect(5)">Button 5</button>
+    <button class="button" onclick="setLocalStorageAndRedirect(6)">Button 6</button>
+    <button class="button" onclick="setLocalStorageAndRedirect(7)">Button 7</button>
+  </div>
+
+  <script>
+    function setLocalStorageAndRedirect(value) {
+      try {
+        localStorage.setItem('buttonValue', value.toString());
+        window.location.href = 'flashcard.html'; // Redirect to flashcard.html
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  </script>
+</body>
+</html>
