@@ -12,19 +12,19 @@
       height: 100vh;
       margin: 0;
       background-color: #f0f0f0;
-      font-family: Arial, sans-serif; /* Set default font family */
+      font-family: Arial, sans-serif;
     }
 
     .flashcard {
-      width: 400px; /* Increased width by 50% */
-      height: 230px; /* Decreased height by 30% */
+      width: 400px;
+      height: 230px;
       perspective: 1000px;
       position: relative;
       cursor: pointer;
-      background-color: #e0e0e0; /* Light gray background */
+      background-color: #e0e0e0;
       border-radius: 10px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      overflow: hidden; /* Prevents content overflow */
+      overflow: hidden;
       transition: transform 0.6s;
     }
 
@@ -44,27 +44,26 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center; /* Center text horizontally */
-      font-size: 24px; /* Reduced font size for better fit */
+      text-align: center;
+      font-size: 24px;
       font-weight: bold;
-      color: #333; /* Text color */
+      color: #333;
       backface-visibility: hidden;
       padding: 20px;
       box-sizing: border-box;
-      transform-style: preserve-3d;
     }
 
     .front {
-      background-color: #f5f5f5; /* Lighter background color */
+      background-color: #f5f5f5;
       transform: rotateY(0deg);
-      border-radius: 10px; /* Rounded corners */
+      border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .back {
-      background-color: #f0f0f0; /* Light gray background */
+      background-color: #f0f0f0;
       transform: rotateY(180deg);
-      border-radius: 10px; /* Rounded corners */
+      border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
@@ -74,7 +73,7 @@
 
     .buttons {
        position: absolute;
-       bottom: 7%; /* Adjusted bottom position */
+       bottom: 7%;
        width: 100%;
        display: flex;
        justify-content: center;
@@ -82,23 +81,23 @@
     }
 
     .buttons .button {
-      width: 60px; /* Reduced button size */
-      height: 60px; /* Reduced button size */
-      background-color: #fff; /* White background */
+      width: 60px;
+      height: 60px;
+      background-color: #fff;
       color: #333;
-      font-size: 14px; /* Reduced font size */
+      font-size: 14px;
       font-weight: bold;
       text-align: center;
-      line-height: 60px; /* Center text vertically */
-      border-radius: 50%; /* Rounded shape */
-      margin: 0 20px; /* Spacing between buttons */
+      line-height: 60px;
+      border-radius: 50%;
+      margin: 0 20px;
       cursor: pointer;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: background-color 0.3s, color 0.3s;
     }
 
     .buttons .button:hover {
-      background-color: #f5f5f5; /* Light gray on hover */
+      background-color: #f5f5f5;
     }
   </style>
 </head>
@@ -107,22 +106,22 @@
 <div class="flashcard" onclick="flipCard(this)">
   <div class="card-inner">
     <div class="front">
-      <div style="margin-top: 10px;"> <!-- Adjusted margin for Text Box 1 -->
-        Hello
+      <div id="englishdisplay" style="margin-top: 10px;">
+        <!-- English display -->
       </div>
-      <div style="margin-top: 5px;"> <!-- Adjusted margin for Text Box 2 -->
-        你好
+      <div id="hokkiendisplay" style="margin-top: 5px;">
+        <!-- Hokkien display -->
       </div>
     </div>
-    <div class="back">
-      li4 ho4
+    <div id="romanizeddisplay" class="back">
+      <!-- Romanized display -->
     </div>
   </div>
 </div>
 
 <div class="buttons">
-  <div class="button" onclick="decreaseCounter()">←</div> <!-- Adjusted button text for compactness -->
-  <div class="button" onclick="increaseCounter()">→</div> <!-- Adjusted button text for compactness -->
+  <div class="button" onclick="decreaseCounter()">←</div>
+  <div class="button" onclick="increaseCounter()">→</div>
 </div>
 
 <script>
@@ -143,8 +142,43 @@
   }
 
   function updateCounterDisplay() {
-    document.getElementById('counterDisplay').innerText = counter;
+    // Ensure counter is within bounds
+    counter = Math.max(counter, 0); // Prevent negative index
+
+    let englishwordlist = [
+      ["hi", "吃饱了吗", "晚安"],
+      ["apple", "pear", "pineapple"]
+    ];
+
+    let hokkienwordlist = [
+      ["read", "jump", "sleep"],
+      ["yellow", "red", "blue"]
+    ];
+
+    let romanizedwordlist = [
+      ["code", "type", "debug"],
+      ["differentiate", "integrate", "summation"]
+    ];
+
+    // Retrieve the current list based on session storage
+    let buttonValue = parseInt(sessionStorage.getItem('buttonValue')) || 0; // Default to 0 if not set
+
+    // Ensure buttonValue is within bounds
+    buttonValue = Math.max(buttonValue, 0); // Prevent negative index
+    buttonValue = Math.min(buttonValue, englishwordlist.length - 1); // Prevent out of bounds
+
+    let englishwordtodisplay = englishwordlist[buttonValue][counter % englishwordlist[buttonValue].length];
+    let hokkienwordtodisplay = hokkienwordlist[buttonValue][counter % hokkienwordlist[buttonValue].length];
+    let romanizedwordtodisplay = romanizedwordlist[buttonValue][counter % romanizedwordlist[buttonValue].length];
+
+    // Update display elements with the words
+    document.getElementById('englishdisplay').textContent = englishwordtodisplay;
+    document.getElementById('hokkiendisplay').textContent = hokkienwordtodisplay;
+    document.getElementById('romanizeddisplay').textContent = romanizedwordtodisplay;
   }
+
+  // Initialize the display on page load
+  updateCounterDisplay();
 </script>
 
 </body>

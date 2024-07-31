@@ -1,41 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-   
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="PW 2024 History of Languages">
     <link rel="icon" href="" type="image/x-icon">
-    <link rel="stylesheet" href="main.css" type="text/css">
     <title>The Hokkien Handbook</title>
-</head>
+    <style>
+        html {
+            font-size: 16px;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-y: scroll;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .container img {
+            max-width: 80px;
+            height: auto;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #4CAF50;
+        }
+
+        .content {
+            display: flex;
+            gap: 20px; /* Add gap between sections */
+            height: calc(100vh - 160px); /* Adjust height to ensure spacing */
+            padding: 0 20px;
+        }
+
+        .left-section {
+            flex: 2;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            overflow: hidden; /* Ensure image doesn’t overflow */
+        }
+
+        .left-section img {
+            max-width: 100%; /* Make image fit the container width */
+            max-height: 100%; /* Make image fit the container height */
+            object-fit: cover; /* Scale the image while maintaining aspect ratio */
+        }
+
+        .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-section button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .right-section button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        p {
+            padding: 20px;
+            background-color: #ffffff;
+            margin: 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
 <body>
-    
     <div class="container">
-        <img src="your-image-url.jpg" alt="Image">
-        <h1>The hokkien handbook</h1>
+        <img src="images/the.jpg" alt="Logo">
+        <h1>The Hokkien Handbook</h1>
     </div>
-        <hr>
-        
+    <hr>
     <div class="content">
         <div class="left-section">
-              <h2>Hokkien for the everyone</h2>
+            <img src="images/thhh.jpg" alt="Content Image" id="thhhimage">
         </div>
         <div class="right-section">
-              <button  onclick="redirectToChapters()">Chapters</button>
-              <button>Tests</button>
+            <button onclick="redirectToChapters()">Chapters</button>
+            <button>Tests</button>
         </div>
-     </div>
-
-     <p>this is a paragraph</p>
-
-     <script>
+    </div>
+    <p>This is a paragraph</p>
+    <script>
         function redirectToChapters() {
-          // Redirect to chapters.html
-          window.location.href = 'chapters.html';
+            // Redirect to chapters.html
+            window.location.href = 'chapters.html';
         }
-      </script>
-    
+    </script>
 </body>
-
 </html>
