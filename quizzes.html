@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Question</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        .question {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #555;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        .options li label {
+            display: block;
+            padding: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .options li label:hover {
+            background-color: #ddd;
+        }
+        .options li input[type="radio"] {
+            display: none;
+        }
+        .options li input[type="radio"]:checked + label {
+            background-color: #cce7ff;
+            border: 1px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Time!</h1>
+        <p class="question">How do you say " Have you eaten?" in Hokkien</p>
+        <ul class="options">
+            <li>
+                <input type="radio" id="option1" name="question" value="London">
+                <label for="option1">lì hò</label>
+            </li>
+            <li>
+                <input type="radio" id="option2" name="question" value="Berlin">
+                <label for="option2">jiàk bàh liao</label>
+            </li>
+            <li>
+                <input type="radio" id="option3" name="question" value="Paris">
+                <label for="option3">kě tǎu záeng</label>
+            </li>
+            <li>
+                <input type="radio" id="option4" name="question" value="Madrid">
+                <label for="option4">jiàk bàh beh</label>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

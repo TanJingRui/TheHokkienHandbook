@@ -120,8 +120,8 @@
 </div>
 
 <div class="buttons">
-  <div class="button" onclick="decreaseCounter()">←</div>
-  <div class="button" onclick="increaseCounter()">→</div>
+  <div class="button" onclick="decreaseCounter(event)">←</div>
+  <div class="button" onclick="increaseCounter(event)">→</div>
 </div>
 
 <script>
@@ -131,12 +131,14 @@
 
   let counter = 0; // Initialize counter variable
 
-  function increaseCounter() {
+  function increaseCounter(event) {
+    event.stopPropagation(); // Prevent card flip
     counter++;
     updateCounterDisplay();
   }
 
-  function decreaseCounter() {
+  function decreaseCounter(event) {
+    event.stopPropagation(); // Prevent card flip
     counter--;
     updateCounterDisplay();
   }
@@ -146,21 +148,21 @@
     counter = Math.max(counter, 0); // Prevent negative index
 
     let englishwordlist = [
-      ["Hello!/Hi!", "How are you?", "Good morning!", "Good afternoon!", "Good evening", "Have you eaten?", "Good Bye!","My name is ~", "Nice to meet you", "Where are you from?", "I am from ~", "What is your name?", "How od are you?"],
-      ["Where is the ~?", "Go straight", "Turn Left", "Turn right", "Hospital", "Clinic", "School", "Restaurant", "Hotel", "Hawker centre", "coffee shop", "Train station", "Bus stop", "Community center", "Library", "Shopping cantre", "Market", "Airport", "Big", "Small", "Near", "Far"],
-      ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty", "One hundered", "One thousand", "Ten thousand", "One hundered million", "Today", "Tommorow", "Yesterday", "The day before", "The day after", "The day after", "The next week", "What is the date today?", "Today is May 24th", "What time is it?" ,"It is 3 O,clock", "10:30", "7:45"],
-      []
-      
+      ["Hello!/Hi!", "How are you?", "Good morning!", "Good afternoon!", "Good evening!", "Have you eaten?", "Goodbye!", "My name is ~", "Nice to meet you", "Where are you from?", "I am from ~", "What is your name?", "How old are you?"],
+      ["Where is the ~?", "Go straight", "Turn left", "Turn right", "Hospital", "Clinic", "School", "Restaurant", "Hotel", "Hawker centre", "Coffee shop", "Train station", "Bus stop", "Community center", "Library", "Shopping center", "Market", "Airport", "Big", "Small", "Near", "Far"],
+      ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty", "One hundred", "One thousand", "Ten thousand", "One hundred million", "Today", "Tomorrow", "Yesterday", "The day before", "The day after", "Next week", "What is the date today?", "Today is May 24th", "What time is it?", "It is 3 o'clock", "10:30", "7:45"]
     ];
 
     let hokkienwordlist = [
-      ["你好！", "你好吗？", "早上好！", "下午好！", "傍晚好！", "你吃了吗？", "再见"],
-      ["yellow", "red", "blue"]
+      ["你好！", "你好吗？", "早上好！", "下午好！", "傍晚好！", "你吃了吗？", "再见！", "我的名字是~", "很高兴见到你", "你从哪里来？", "我来自~", "你叫什么名字？", "你几岁？"],
+      ["在哪里？", "直走", "左转", "右转", "医院", "诊所", "学校", "餐馆", "酒店", "小贩中心", "咖啡店", "火车站", "巴士站", "社区中心", "图书馆", "购物中心", "市场", "机场", "大", "小", "近", "远"],
+      ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十", "一百", "一千", "一万", "一亿", "今天", "明天", "昨天", "前天", "后天", "下周", "今天几号？", "今天是5月24号", "现在几点？", "现在3点钟", "10:30", "7:45"]
     ];
 
     let romanizedwordlist = [
-      ["code", "type", "debug"],
-      ["differentiate", "integrate", "summation"]
+      ["lí hó", "lí hó bô", "tsá-kah hó!", "āu-tsiánn hó!", "ām-po hó!", "lí chiah bô?", "tsài-kiàn!", "góa ê miâ sī ~", "góa hó-sim kìnn lí", "lí tī tó-uī lâi?", "góa lâi-tī ~", "lí kúi huē?", "lí kúi nî?"], 
+      ["tī tó-uī?", "tsia̍t lōo", "tá-kah", "tá-kah", "ī-suàn", "kī-liōng", "ha̍k-hāu", "chài-kiâu", "iân-tî", "tshiú-bí-tsûn", "kò-pi-thiann", "hué-tsēk-thiann", "pài-tsēk-thiann", "kōo-kì-tshia̍k", "tú-sū-ài", "siūnn-liū-tshiânn", "tsòo-bī-tsūn", "kiā-kū", "tōa", "sió", "kīn", "hî"],
+      ["it", "jī", "sann", "sì", "gōo", "la̍k", "tsit", "peh", "kiú", "tsap", "tsap-it", "tsap-jī", "tsap-sann", "tsap-sì", "tsap-gōo", "tsap-la̍k", "tsap-tsit", "tsap-peh", "tsap-kiú", "jī-tsap", "pah", "tshēng", "bān", "it-pōo", "kin-á", "tài-tāng", "tsa-jī", "tsa-jī-ē-po", "tsa-jī-po", "tsa-jī-lí-pái", "tsa-jī-ē-tsuán", "kin-á sī kuí-geh-kuí-jı̍t", "kin-á sī goé-geh jī-sı̍t-sè-jı̍t", "tsai-jı̍t kuí-tiám", "kin-á sī sa-tiám", "tsap-diám-sap", "tshit-tiám-tsap-gōo"]
     ];
 
     // Retrieve the current list based on session storage
@@ -170,9 +172,19 @@
     buttonValue = Math.max(buttonValue, 0); // Prevent negative index
     buttonValue = Math.min(buttonValue, englishwordlist.length - 1); // Prevent out of bounds
 
-    let englishwordtodisplay = englishwordlist[buttonValue][counter % englishwordlist[buttonValue].length];
-    let hokkienwordtodisplay = hokkienwordlist[buttonValue][counter % hokkienwordlist[buttonValue].length];
-    let romanizedwordtodisplay = romanizedwordlist[buttonValue][counter % romanizedwordlist[buttonValue].length];
+    let maxCounter = Math.min(
+      englishwordlist[buttonValue].length,
+      hokkienwordlist[buttonValue].length,
+      romanizedwordlist[buttonValue].length
+    ) - 1;
+
+    if (counter > maxCounter) {
+      counter = maxCounter;
+    }
+
+    let englishwordtodisplay = englishwordlist[buttonValue][counter];
+    let hokkienwordtodisplay = hokkienwordlist[buttonValue][counter];
+    let romanizedwordtodisplay = romanizedwordlist[buttonValue][counter];
 
     // Update display elements with the words
     document.getElementById('englishdisplay').textContent = englishwordtodisplay;

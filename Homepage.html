@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="PW 2024 History of Languages">
     <link rel="icon" href="" type="image/x-icon">
     <title>The Hokkien Handbook</title>
     <style>
@@ -111,17 +110,17 @@
 </head>
 <body>
     <div class="container">
-        <img src="the.jpg" alt="Logo">
+        <img src="images/the.jpg" alt="Logo">
         <h1>The Hokkien Handbook</h1>
     </div>
     <hr>
     <div class="content">
         <div class="left-section">
-            <img src="thhh.jpg" alt="Content Image" id="thhhimage">
+            <img src="images/thhh.jpg" alt="Content Image" id="thhhimage">
         </div>
         <div class="right-section">
             <button onclick="redirectToChapters()">Chapters</button>
-            <button>Tests</button>
+            <button onclick="redirectToTests()">Tests</button>
         </div>
     </div>
     <p>This is a paragraph</p>
@@ -129,6 +128,11 @@
         function redirectToChapters() {
             // Redirect to chapters.html
             window.location.href = 'chapters.html';
+        }
+
+        function redirectToTests() {
+            // Redirect to chapters.html
+            window.location.href = 'quizzes.html';
         }
     </script>
 </body>

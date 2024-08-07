@@ -77,24 +77,20 @@
 <body>
   <div class="button-grid">
     <button class="button" onclick="setSessionStorageAndNavigate(0)">Basic Greetings & Introductions</button>
-    <button class="button" onclick="setSessionStorageAndNavigate(1)">Directions , Places &Descriptive Terms</button>
+    <button class="button" onclick="setSessionStorageAndNavigate(1)">Directions, Places & Descriptive Terms</button>
     <button class="button" onclick="setSessionStorageAndNavigate(2)">Numerals</button>
     <button class="button" onclick="setSessionStorageAndNavigate(3)">Personal Relationships & Feelings</button>
     <button class="button" onclick="setSessionStorageAndNavigate(4)">Ordering Food</button>
     <button class="button" onclick="setSessionStorageAndNavigate(5)">Health Issues</button>
     <button class="button" onclick="setSessionStorageAndNavigate(6)">Travelling</button>
-    <button class="button" >More coming soon</button>
+    <button class="button">More coming soon</button>
   </div>
 
   <script>
     function setSessionStorageAndNavigate(value) {
-      try {
-        
-        window.location.href = 'flashcard.html'; // Navigate to c.html
-        sessionStorage.setItem('buttonValue', value.toString());
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      sessionStorage.setItem('buttonValue', value.toString());
+      window.location.href = 'flashcard.html'; // Navigate to flashcard.html
     }
   </script>
 </body>
+</html>
